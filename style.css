@@ -1,0 +1,642 @@
+/* --- FONT & COLOR VARIABLES --- */
+:root {
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Lato", sans-serif;
+
+  --color-text: #1a1a1a; /* Very dark gray for high contrast */
+  --color-background: rgb(236, 246, 253); /* Light blue */
+  --color-primary: #005f73; /* A deep teal for links and accents */
+  --color-header-bg: #ffffff; /* White, for clean contrast on light blue bg */
+  --color-border: #dee2e6; /* A subtle border color */
+}
+
+/* --- SMOOTH SCROLLING --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- GLOBAL RESETS & STYLES --- */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* --- RESPONSIVE IMAGES & MEDIA --- */
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  margin: 0; /* Remove default browser margin */
+  font-family: var(--font-body);
+  font-size: 18px; /* A comfortable reading size */
+  line-height: 1.6; /* Ample space between lines */
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto; /* Center the main content */
+  padding: 2rem; /* Add some space around the content */
+}
+
+/* --- ACCESSIBILITY: SKIP LINK --- */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  z-index: 9999; /* Ensure it's on top of everything, including the sticky header */
+  -webkit-transition: top 0.3s;
+  -o-transition: top 0.3s;
+  transition: top 0.3s;
+}
+
+.skip-link:focus,
+.skip-link:hover {
+  top: 0;
+}
+
+/* --- GENERAL SECTION STYLING --- */
+section {
+  /* Add vertical padding and a bottom border to each section */
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+section:last-of-type {
+  border-bottom: none; /* Remove border from the last section */
+}
+
+/* --- HOME (HERO) SECTION --- */
+#home {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh; /* Make it take up most of the viewport height */
+}
+
+#home h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+/* --- ABOUT ME SECTION --- */
+#about {
+  text-align: center;
+  background-color: var(--color-header-bg); /* Use light gray for a subtle background */
+}
+
+#about img {
+  width: 150px;
+  height: 150px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%; /* Makes the avatar circular */
+  object-fit: cover; /* Prevents image distortion */
+  margin-bottom: 1.5rem;
+  margin-left: auto; /* Add this to center the image */
+  margin-right: auto; /* Add this to center the image */
+}
+
+#about p {
+  font-size: 1.1rem; /* Slightly larger font for the intro paragraph */
+  max-width: 60ch; /* Limits line length for better readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- LOGO --- */
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: var(--color-header-bg);
+  border-bottom: 1px solid var(--color-border);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky; /* Makes the header stick to the top on scroll */
+  top: 0;
+  z-index: 10; /* Ensures header stays above other content */
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  gap: 2.5rem; /* Space between navigation items */
+}
+
+.main-nav a {
+  display: block;
+  padding: 1.5rem 0;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 700; /* Bold Lato */
+  -webkit-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Style for hover and keyboard focus states */
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--color-primary);
+  outline: none; /* The color change is a sufficient focus indicator */
+}
+
+.nav-toggle {
+  display: none; /* Hidden on desktop */
+}
+
+/* --- PROJECTS SECTION --- */
+#projects h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.filter-buttons {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease, color 0.2s ease;
+  -o-transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-header-bg); /* Use white for better contrast */
+  outline: none;
+}
+
+.projects-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow cards to wrap to the next line on smaller screens */
+  gap: 2rem; /* Space between cards */
+  -webkit-box-pack: center;
+  justify-content: center; /* Center cards if there's extra space */
+}
+
+.project-item {
+  background-color: var(--color-header-bg); /* Use white for cards */
+  border: 1px solid var(--color-border);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px; /* Soft rounded corners */
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden; /* Ensures the image corners are also rounded */
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+  -o-transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  /* Set the width for a two-column layout, accounting for the gap */
+  -webkit-flex-basis: calc(50% - 1rem);
+  -ms-flex-preferred-size: calc(50% - 1rem);
+  flex-basis: calc(50% - 1rem);
+}
+
+.project-item:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px); /* Lift the card on hover */
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.project-item img {
+  cursor: pointer; /* Indicates the image is clickable */
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.project-item:hover img {
+  opacity: 0.85;
+}
+
+.project-item.hide {
+  display: none;
+}
+
+.project-item-content {
+  padding: 1.5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  flex-grow: 1; /* Allows this container to grow and fill space */
+}
+
+.project-item-content a {
+  margin-top: auto; /* Pushes the link to the bottom of the card */
+}
+
+/* --- SKILLS SECTION --- */
+#skills h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+#skills ul {
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+  display: -ms-grid;
+  display: -webkit-box;
+  display: grid;
+  /* The following is an invalid property and will be ignored by browsers that don't support it. */
+  /* A proper fallback for IE10/11 would require a different approach, like using Flexbox. */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#skills li {
+  background-color: var(--color-header-bg);
+  padding: 0.75rem 1.25rem;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  font-weight: 700;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#skills li::before {
+  content: "✓"; /* The icon */
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* --- CONTACT FORM --- */
+#contact h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+#contact form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#contact form div {
+  margin-bottom: 1.5rem;
+}
+
+#contact label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  -webkit-transition: border-color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+  -o-transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  -webkit-box-shadow: 0 0 0 3px rgba(0, 95, 115, 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 95, 115, 0.2); /* Teal focus ring */
+}
+
+/* Styles for validation errors */
+input.invalid,
+textarea.invalid {
+  border-color: #d9534f; /* A standard error red */
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 0.875rem;
+  display: block;
+  margin-top: 0.25rem;
+  height: 1em; /* Reserve space to prevent layout shift */
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-header-bg); /* Use white for better contrast */
+  border: none;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background-color: #003f4f; /* A darker shade of primary for interaction */
+}
+
+/* --- FOOTER --- */
+footer {
+  background-color: rgb(40, 127, 75); /* Dark green */
+  color: var(--color-header-bg);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* --- LIGHTBOX STYLES --- */
+.lightbox {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(26, 26, 26, 0.9);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.lightbox.active {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  -webkit-animation-name: zoom;
+  animation-name: zoom;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+}
+
+@-webkit-keyframes zoom {
+  from { -webkit-transform: scale(0.8); }
+  to { -webkit-transform: scale(1); }
+}
+
+@keyframes zoom {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 45px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  color: #bbb;
+  text-decoration: none;
+}
+
+/* --- RESPONSIVE DESIGN: MEDIA QUERIES --- */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1, h2, h3 {
+    /* Adjust heading sizes for smaller screens */
+    line-height: 1.3;
+  }
+
+  header {
+    padding: 0 1rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(26, 26, 26, 0.95);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: -webkit-transform 250ms ease-in-out;
+    -o-transition: transform 250ms ease-in-out;
+    transition: transform 250ms ease-in-out;
+    z-index: 99;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+  }
+
+  .main-nav a {
+    color: var(--color-background);
+    font-size: 1.5rem;
+  }
+
+  .nav-open .main-nav {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  .nav-open .nav-toggle {
+    position: fixed; /* Keep it in place when menu is open */
+  }
+
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for element's own height */
+    right: 1rem;
+    z-index: 100;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0.5em;
+  }
+
+  .hamburger {
+    display: block;
+    position: relative;
+    width: 2em;
+    height: 3px;
+    background: var(--color-text);
+    -webkit-transition: -webkit-transform 250ms ease-in-out;
+    -o-transition: transform 250ms ease-in-out;
+    transition: transform 250ms ease-in-out;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-text);
+  }
+
+  .hamburger::before { top: -8px; }
+  .hamburger::after { bottom: -8px; }
+
+  .nav-open .hamburger {
+    -webkit-transform: rotate(0.625turn);
+    transform: rotate(0.625turn);
+  }
+
+  .nav-open .hamburger::before {
+    -webkit-transform: rotate(90deg) translateX(-8px);
+    transform: rotate(90deg) translateX(-8px);
+  }
+
+  .nav-open .hamburger::after {
+    opacity: 0;
+  }
+
+  #home h1 {
+    font-size: 2.5rem;
+  }
+
+  .project-item {
+    /* Make project cards stack vertically on mobile */
+    flex-basis: 100%;
+  }
+
+  #skills ul {
+    /* Switch to a 2-column grid on tablets */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for small mobile screens */
+  .nav-list {
+    gap: 1rem;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow nav items to wrap if needed */
+  }
+
+  #home h1 {
+    font-size: 2rem;
+  }
+}
