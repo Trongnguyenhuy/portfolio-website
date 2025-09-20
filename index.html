@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The web developer portfolio of John Doe." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+    <title>Page Title</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+      <a href="#home" class="logo">John Doe</a>
+      <button class="nav-toggle" aria-label="toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <nav role="navigation" class="main-nav">
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main-content">
+      <section id="home">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm John Doe, a passionate web developer.</p>
+      </section>
+      <section id="about">
+        <h2>About Me</h2>
+        <img src="https://picsum.photos/200" alt="Avatar of John Doe" />
+        <p>
+          I specialize in creating responsive and user-friendly websites. I have
+          a strong foundation in front-end technologies and a keen eye for
+          design.
+        </p>
+      </section>
+
+      <section id="projects">
+        <h2>My Projects</h2>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web-dev">Web Dev</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+        <div class="projects-container">
+          <div class="project-item" data-category="web-dev">
+            <img src="https://picsum.photos/seed/project1/400/250" alt="Screenshot preview of Project One" />
+            <div class="project-item-content">
+              <h3>Project One</h3>
+              <p>A web development project focusing on front-end technologies.</p>
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="View Project One (opens in a new tab)">View Project</a>
+            </div>
+          </div>
+          <div class="project-item" data-category="design">
+            <img src="https://picsum.photos/seed/project2/400/250" alt="Screenshot preview of Project Two" />
+            <div class="project-item-content">
+              <h3>Project Two</h3>
+              <p>A UI/UX design project for a mobile application.</p>
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="View Project Two (opens in a new tab)">View Project</a>
+            </div>
+          </div>
+          <div class="project-item" data-category="web-dev">
+            <img src="https://picsum.photos/seed/project3/400/250" alt="Screenshot preview of Project Three" />
+            <div class="project-item-content">
+              <h3>Project Three</h3>
+              <p>A full-stack web application built with the MERN stack.</p>
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="View Project Three (opens in a new tab)">View Project</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Node.js</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="javascript:void(0);" method="post" id="contact-form" novalidate>
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+            <small class="error-message"></small>
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+            <small class="error-message"></small>
+          </div>
+          <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <small class="error-message"></small>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 John Doe. All rights reserved.</p>
+    </footer>
+    <script src="script.js" defer></script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" alt="Enlarged project image" />
+    </div>
+  </body>
+</html>
